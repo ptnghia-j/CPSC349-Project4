@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pocketbase": "pocketbase.exe serve",
+    "pocketbase": "./pocketbase serve",
     "esbuild": "esbuild src/app.jsx --outfile=pb_public/app.js --watch",
     "browsersync": "browser-sync http://localhost:8090 --files 'pb_public/**/*'",
     "start": "npm-run-all --parallel esbuild pocketbase browsersync"
