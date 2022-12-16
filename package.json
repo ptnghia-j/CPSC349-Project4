@@ -7,10 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "pocketbase": "./pocketbase serve",
     "tailwind": "tailwindcss -i ./src/input.css -o ./pb_public/main.css --watch",
-    "esbuild": "esbuild src/app.jsx --outfile=pb_public/app.js --watch",
+    "esbuild": "esbuild src/*.jsx --outdir=pb_public/js --watch",
+    "esbuild-component": "esbuild src/components/*.jsx --outdir=pb_public/components --watch",
     "browsersync": "browser-sync http://localhost:8090 --files 'pb_public/**/*'",
-    "start": "npm-run-all --parallel tailwind esbuild pocketbase browsersync"
+    "start": "npm-run-all --parallel tailwind esbuild esbuild-component pocketbase browsersync"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gmendzy/cpsc349-exercise4.git"
