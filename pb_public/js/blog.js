@@ -19,33 +19,12 @@ function CreatePost() {
       console.log(error);
     }
   };
-  return /* @__PURE__ */ React.createElement("div", { className: "Blog" }, /* @__PURE__ */ React.createElement(HeaderBar, null), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h2", { style: { textAlign: "center" } }, "Blogs"), /* @__PURE__ */ React.createElement(
-    "div",
-    {
-      className: "flex flex-wrap -m-4",
-      style: { display: "block", marginLeft: "auto", marginRight: "auto" }
-    },
-    /* @__PURE__ */ React.createElement(
-      "div",
-      {
-        className: "p-4 md:w-1/2 w-full",
-        style: { display: "block", marginLeft: "auto", marginRight: "auto" }
-      },
-      /* @__PURE__ */ React.createElement(
-        "div",
-        {
-          className: "h-full bg-gray-100 p-8 rounded",
-          style: { display: "block", marginLeft: "auto", marginRight: "auto" }
-        }
-      )
-    )
-  ), "\xA0", /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ React.createElement("div", { className: "Blog" }, /* @__PURE__ */ React.createElement(HeaderBar, null), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h2", { className: "text-center" }, "Blogs"), /* @__PURE__ */ React.createElement("div", { className: "flex flex-wrap -m-4 block ml-2 mr-2 place-content-center" }, /* @__PURE__ */ React.createElement("div", { className: "h-full bg-gray-100 p-8 rounded block ml-2 mr-2" }, /* @__PURE__ */ React.createElement("textarea", { name: "post", rows: "4", cols: "50" }, " "))), "\xA0", /* @__PURE__ */ React.createElement("div", { className: "flex flex-wrap block place-content-center" }, /* @__PURE__ */ React.createElement(
     "button",
     {
-      className: "add-blog",
-      style: { display: "block", marginLeft: "auto", marginRight: "auto" },
+      className: "add-blog block ml-2 mr-2",
       onClick: handleSubmit
     },
     "Add Blogs"
-  )), /* @__PURE__ */ React.createElement(FooterBar, null));
+  ))), /* @__PURE__ */ React.createElement(FooterBar, null));
 }

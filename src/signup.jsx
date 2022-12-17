@@ -22,23 +22,35 @@ root.render(
 
 function SignUp() {
 
+  const [username, setUsername] = React.useState("")
+  const [password, setPassword] = React.useState("")
+  const [email, setEmail] = React.useState("")
+  
+  
+
   const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(username + " " + password + " " + email)
+  
     const data = {
-      "username": event.target.username.value,
-      "email": event.target.email.value,
-      //"emailVisibility": true,
-      "password": event.target.password.value,
-      //"passwordConfirm": event.target.password.value
+      "username": username,
+      "email": email,
+      "emailVisibility": true,
+      "password": password,
+      "passwordConfirm": password
     };
-    console.log(data);
-    try { const record = await pb.collection('users').create(data); 
-    // if(record) {
-    //   window.location.href = '/login.html';
-    // }
-    }
-    catch (error) {console.log(error); }
+    console.log(data)
+    await pb.collection('users_auth').create(data)
+    
+    window.location.href = './login.html'
+    
   }
 
+//     //const record = await pb.collection('users_auth').create(data);
+
+//     // // (optional) send an email verification request
+//     // await pb.collection('users_auth').requestVerification('test@example.com');
+// }
 
   return (
     <div className="SignUp">
@@ -70,6 +82,7 @@ function SignUp() {
                   placeholder="username"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   required
+                  onChange={e => setUsername(e.target.value)}
                 />
               </div>
               <div className="relative mb-4">
@@ -80,6 +93,7 @@ function SignUp() {
                   placeholder="Email"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   required
+                  onChange={e => setEmail(e.target.value)}
                 />
               </div>
               <div className="relative mb-4">
@@ -90,6 +104,7 @@ function SignUp() {
                   placeholder="password"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   required
+                  onChange={e=> setPassword(e.target.value)}
                 />
               </div>
               <button

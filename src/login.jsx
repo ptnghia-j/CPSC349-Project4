@@ -21,37 +21,25 @@ const pb = new PocketBase('http://127.0.0.1:8090');
 
 function LogIn () {
 
-  let data
+  const [username, setUsername] = React.useState("")
+  const [password, setPassword] = React.useState("")
+  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    data = {
-      "username": event.target.username.value,
-      "password": event.target.password.value,
-    }
-
-    console.log(data);
-    try {
-      console.log(event.target.username.value)
-      console.log(event.target.password.value)
-      //const authData = await pb.collection('users').authWithPassword(data.username, data.password);
-      const authData = await pb.admins.authWithPassword("mendoza.geoff@live.com", "Halo3isbest")
-      
-     }
-    catch (error) {console.log(error); }
-
-    console.log(pb.authStore.isValid)
-
-    //console.log(pb.authStore.model.id);
-
-    // // "logout" the last authenticated account
-    //pb.authStore.clear();
-
+    await pb.collection('users_auth').authWithPassword(username, password);
+  
     if (pb.authStore.isValid){
       window.location.href = './home.html';
     }
+    
+    // "logout" the last authenticated account
+    pb.authStore.clear();
+    
   }
 
+  
   const doSomethingElse = async (event) => {
     event.preventDefault();
     console.log("do something else");
@@ -82,6 +70,7 @@ function LogIn () {
                   placeholder="username"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   required
+                  onChange={e => setUsername(e.target.value)}
                 />
               </div>
               <div className="relative mb-4">
@@ -92,6 +81,7 @@ function LogIn () {
                   placeholder="password"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   required
+                  onChange={e => setPassword(e.target.value)}
                 />
               </div>
               <button

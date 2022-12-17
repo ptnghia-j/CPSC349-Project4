@@ -31,29 +31,21 @@ function CreatePost(){
   
     <HeaderBar />
     <div>
-      <h2 style={{ textAlign: "center" }}>Blogs</h2>
-      <div
-        className="flex flex-wrap -m-4"
-        style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
-      >
-        <div
-          className="p-4 md:w-1/2 w-full"
-          style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
-        >
-          <div
-            className="h-full bg-gray-100 p-8 rounded"
-            style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
-          ></div>
+      <h2 className="text-center">Blogs</h2>
+      <div className="flex flex-wrap -m-4 block ml-2 mr-2 place-content-center">
+        <div className="h-full bg-gray-100 p-8 rounded block ml-2 mr-2">
+          <textarea name="post" rows="4" cols="50" > </textarea>
         </div>
+        
       </div>
       &nbsp;
-      <button
-        className="add-blog"
-        style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
-        onClick={handleSubmit}
-      >
-        Add Blogs
-      </button>
+      <div className="flex flex-wrap block place-content-center">
+        <button
+          className="add-blog block ml-2 mr-2" onClick={handleSubmit}>
+          Add Blogs
+        </button>
+      </div>
+     
     </div>
     <FooterBar />
     </div>
