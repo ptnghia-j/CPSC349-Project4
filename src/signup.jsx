@@ -1,3 +1,5 @@
+import PocketBase from 'https://unpkg.com/pocketbase@0.8.2/dist/pocketbase.es.mjs';
+
 /*
 !Important:
 1. Component files should be imported with extension .js 
@@ -10,6 +12,8 @@ import FooterBar from "/components/footer.js";
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
+const pb = new PocketBase('http://127.0.0.1:8090');
+
 root.render(
   <React.StrictMode>
     <SignUp />
@@ -17,10 +21,29 @@ root.render(
 )
 
 function SignUp() {
+
+  const handleSubmit = async (event) => {
+    const data = {
+      "username": event.target.username.value,
+      "email": event.target.email.value,
+      //"emailVisibility": true,
+      "password": event.target.password.value,
+      //"passwordConfirm": event.target.password.value
+    };
+    console.log(data);
+    try { const record = await pb.collection('users').create(data); 
+    // if(record) {
+    //   window.location.href = '/login.html';
+    // }
+    }
+    catch (error) {console.log(error); }
+  }
+
+
   return (
     <div className="SignUp">
       <HeaderBar />
-      <form action="/user/signup" method="post">
+      <form onSubmit={handleSubmit}>
         <section className="text-gray-600 body-font">
           <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
             <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
@@ -46,7 +69,7 @@ function SignUp() {
                   name="username"
                   placeholder="username"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  required=""
+                  required
                 />
               </div>
               <div className="relative mb-4">
@@ -56,7 +79,7 @@ function SignUp() {
                   name="email"
                   placeholder="Email"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  required=""
+                  required
                 />
               </div>
               <div className="relative mb-4">
@@ -66,16 +89,16 @@ function SignUp() {
                   name="password"
                   placeholder="password"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  required=""
+                  required
                 />
               </div>
               <button
-                className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-                type="submit"
-              >
-                Sign Up
-              </button>
-              <a href="/user/login" style={{ color: "rgb(0, 119, 255)" }}>
+                  className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                  type="submit"
+                >
+                  Sign Up
+                </button>
+              <a href="./login.html" style={{ color: "rgb(0, 119, 255)" }}>
                 Already have an account?
               </a>
             </div>

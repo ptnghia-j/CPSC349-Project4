@@ -1,11 +1,37 @@
+import PocketBase from "https://unpkg.com/pocketbase@0.8.2/dist/pocketbase.es.mjs";
 import HeaderBar from "/components/header.js";
 import FooterBar from "/components/footer.js";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   /* @__PURE__ */ React.createElement(React.StrictMode, null, /* @__PURE__ */ React.createElement(LogIn, null))
 );
+const pb = new PocketBase("http://127.0.0.1:8090");
 function LogIn() {
-  return /* @__PURE__ */ React.createElement("div", { className: "LogIn" }, /* @__PURE__ */ React.createElement(HeaderBar, null), /* @__PURE__ */ React.createElement("form", { action: "/user/login", method: "post" }, /* @__PURE__ */ React.createElement("section", { className: "text-gray-600 body-font" }, /* @__PURE__ */ React.createElement("div", { className: "container px-5 py-24 mx-auto flex flex-wrap items-center" }, /* @__PURE__ */ React.createElement("div", { className: "lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0" }, /* @__PURE__ */ React.createElement("h1", { className: "title-font font-medium text-3xl text-gray-900" }, "Now that you have an account, log in to start blogging!")), /* @__PURE__ */ React.createElement("div", { className: "lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0" }, /* @__PURE__ */ React.createElement("h2", { className: "text-gray-900 text-lg font-medium title-font mb-5" }, "Login"), /* @__PURE__ */ React.createElement("div", { className: "relative mb-4" }, /* @__PURE__ */ React.createElement("label", { className: "leading-7 text-sm text-gray-600" }, "Username"), /* @__PURE__ */ React.createElement(
+  let data;
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    data = {
+      "username": event.target.username.value,
+      "password": event.target.password.value
+    };
+    console.log(data);
+    try {
+      console.log(event.target.username.value);
+      console.log(event.target.password.value);
+      const authData = await pb.admins.authWithPassword("mendoza.geoff@live.com", "Halo3isbest");
+    } catch (error) {
+      console.log(error);
+    }
+    console.log(pb.authStore.isValid);
+    if (pb.authStore.isValid) {
+      window.location.href = "./home.html";
+    }
+  };
+  const doSomethingElse = async (event) => {
+    event.preventDefault();
+    console.log("do something else");
+  };
+  return /* @__PURE__ */ React.createElement("div", { className: "LogIn" }, /* @__PURE__ */ React.createElement(HeaderBar, null), /* @__PURE__ */ React.createElement("form", { onSubmit: handleSubmit }, /* @__PURE__ */ React.createElement("section", { className: "text-gray-600 body-font" }, /* @__PURE__ */ React.createElement("div", { className: "container px-5 py-24 mx-auto flex flex-wrap items-center" }, /* @__PURE__ */ React.createElement("div", { className: "lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0" }, /* @__PURE__ */ React.createElement("h1", { className: "title-font font-medium text-3xl text-gray-900" }, "Now that you have an account, log in to start blogging!")), /* @__PURE__ */ React.createElement("div", { className: "lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0" }, /* @__PURE__ */ React.createElement("h2", { className: "text-gray-900 text-lg font-medium title-font mb-5" }, "Login"), /* @__PURE__ */ React.createElement("div", { className: "relative mb-4" }, /* @__PURE__ */ React.createElement("label", { className: "leading-7 text-sm text-gray-600" }, "Username"), /* @__PURE__ */ React.createElement(
     "input",
     {
       type: "text",
@@ -13,7 +39,7 @@ function LogIn() {
       name: "username",
       placeholder: "username",
       className: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
-      required: ""
+      required: true
     }
   )), /* @__PURE__ */ React.createElement("div", { className: "relative mb-4" }, /* @__PURE__ */ React.createElement("label", { className: "leading-7 text-sm text-gray-600" }, "password"), /* @__PURE__ */ React.createElement(
     "input",
@@ -22,7 +48,7 @@ function LogIn() {
       name: "password",
       placeholder: "password",
       className: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
-      required: ""
+      required: true
     }
   )), /* @__PURE__ */ React.createElement(
     "button",
@@ -31,5 +57,5 @@ function LogIn() {
       type: "submit"
     },
     "Log in"
-  ), /* @__PURE__ */ React.createElement("a", { href: "/user/forgot", style: { color: "rgb(0, 119, 255)" } }, "Forgot your password?"), /* @__PURE__ */ React.createElement("a", { href: "./signup.html", style: { color: "rgb(0, 119, 255)" } }, "Don't have an account? sign up here"))))), /* @__PURE__ */ React.createElement(FooterBar, null));
+  ), /* @__PURE__ */ React.createElement("a", { href: "", style: { color: "rgb(0, 119, 255)" } }, "Forgot your password?"), /* @__PURE__ */ React.createElement("a", { href: "./signup.html", style: { color: "rgb(0, 119, 255)" } }, "Don't have an account? sign up here"))))), /* @__PURE__ */ React.createElement(FooterBar, null));
 }
