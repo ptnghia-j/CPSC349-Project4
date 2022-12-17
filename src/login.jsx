@@ -1,3 +1,4 @@
+import PocketBase from 'https://unpkg.com/pocketbase@0.8.2/dist/pocketbase.es.mjs';
 /*
 !Important:
 1. Component files should be imported with extension .js 
@@ -16,12 +17,39 @@ root.render(
   </React.StrictMode>
 )
 
+const pb = new PocketBase('http://127.0.0.1:8090');
 
 function LogIn () {
+
+  const [username, setUsername] = React.useState("")
+  const [password, setPassword] = React.useState("")
+  
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    await pb.collection('users_auth').authWithPassword(username, password);
+  
+    if (pb.authStore.isValid){
+      window.location.href = './home.html';
+    }
+    
+    // "logout" the last authenticated account
+    pb.authStore.clear();
+    
+  }
+
+  
+  const doSomethingElse = async (event) => {
+    event.preventDefault();
+    console.log("do something else");
+  }
+
   return (
     <div className="LogIn">
       <HeaderBar />
-      <form action="/user/login" method="post">
+
+      <form onSubmit={handleSubmit}>
         <section className="text-gray-600 body-font">
           <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
             <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
@@ -41,7 +69,8 @@ function LogIn () {
                   name="username"
                   placeholder="username"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  required=""
+                  required
+                  onChange={e => setUsername(e.target.value)}
                 />
               </div>
               <div className="relative mb-4">
@@ -51,7 +80,8 @@ function LogIn () {
                   name="password"
                   placeholder="password"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  required=""
+                  required
+                  onChange={e => setPassword(e.target.value)}
                 />
               </div>
               <button
@@ -60,7 +90,7 @@ function LogIn () {
               >
                 Log in
               </button>
-              <a href="/user/forgot" style={{ color: "rgb(0, 119, 255)" }}>
+              <a href="" style={{ color: "rgb(0, 119, 255)" }}>
                 Forgot your password?
               </a>
               <a href="./signup.html" style={{ color: "rgb(0, 119, 255)" }}>
@@ -70,6 +100,7 @@ function LogIn () {
           </div>
         </section>
       </form>
+      
       <FooterBar />
     </div>
   )

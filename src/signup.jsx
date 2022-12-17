@@ -1,3 +1,5 @@
+import PocketBase from 'https://unpkg.com/pocketbase@0.8.2/dist/pocketbase.es.mjs';
+
 /*
 !Important:
 1. Component files should be imported with extension .js 
@@ -10,6 +12,8 @@ import FooterBar from "/components/footer.js";
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
+const pb = new PocketBase('http://127.0.0.1:8090');
+
 root.render(
   <React.StrictMode>
     <SignUp />
@@ -17,10 +21,41 @@ root.render(
 )
 
 function SignUp() {
+
+  const [username, setUsername] = React.useState("")
+  const [password, setPassword] = React.useState("")
+  const [email, setEmail] = React.useState("")
+  
+  
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(username + " " + password + " " + email)
+  
+    const data = {
+      "username": username,
+      "email": email,
+      "emailVisibility": true,
+      "password": password,
+      "passwordConfirm": password
+    };
+    console.log(data)
+    await pb.collection('users_auth').create(data)
+    
+    window.location.href = './login.html'
+    
+  }
+
+//     //const record = await pb.collection('users_auth').create(data);
+
+//     // // (optional) send an email verification request
+//     // await pb.collection('users_auth').requestVerification('test@example.com');
+// }
+
   return (
     <div className="SignUp">
       <HeaderBar />
-      <form action="/user/signup" method="post">
+      <form onSubmit={handleSubmit}>
         <section className="text-gray-600 body-font">
           <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
             <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
@@ -46,7 +81,8 @@ function SignUp() {
                   name="username"
                   placeholder="username"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  required=""
+                  required
+                  onChange={e => setUsername(e.target.value)}
                 />
               </div>
               <div className="relative mb-4">
@@ -56,7 +92,8 @@ function SignUp() {
                   name="email"
                   placeholder="Email"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  required=""
+                  required
+                  onChange={e => setEmail(e.target.value)}
                 />
               </div>
               <div className="relative mb-4">
@@ -66,16 +103,17 @@ function SignUp() {
                   name="password"
                   placeholder="password"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  required=""
+                  required
+                  onChange={e=> setPassword(e.target.value)}
                 />
               </div>
               <button
-                className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-                type="submit"
-              >
-                Sign Up
-              </button>
-              <a href="/user/login" style={{ color: "rgb(0, 119, 255)" }}>
+                  className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                  type="submit"
+                >
+                  Sign Up
+                </button>
+              <a href="./login.html" style={{ color: "rgb(0, 119, 255)" }}>
                 Already have an account?
               </a>
             </div>
