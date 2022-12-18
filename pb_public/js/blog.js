@@ -18,8 +18,8 @@ function CreatePost() {
   const [content, setPost] = React.useState("");
   const handleSubmit = async (event) => {
     const data = {
-      "username": localStorage.getItem("username"),
-      "content": content
+      username: localStorage.getItem("username"),
+      content
     };
     console.log(content);
     try {

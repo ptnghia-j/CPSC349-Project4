@@ -32,7 +32,7 @@ function AboutUs() {
     {
       alt: "team",
       className: "w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4",
-      src: "https://dummyimage.com/88x88"
+      src: "https://gray-wtap-prod.cdn.arcpublishing.com/resizer/Mvm-FbZEPa1ntEZfgzM4kY2ELXc=/1200x675/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/5CGN3CK5YJDMVAHP7NMWDNCYH4.jpg"
     }
   ), /* @__PURE__ */ React.createElement("div", { className: "flex-grow" }, /* @__PURE__ */ React.createElement(
     "h2",
@@ -60,7 +60,7 @@ function AboutUs() {
     {
       alt: "team",
       className: "w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4",
-      src: "https://dummyimage.com/88x88"
+      src: "https://gray-wtap-prod.cdn.arcpublishing.com/resizer/Mvm-FbZEPa1ntEZfgzM4kY2ELXc=/1200x675/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/5CGN3CK5YJDMVAHP7NMWDNCYH4.jpg"
     }
   ), /* @__PURE__ */ React.createElement("div", { className: "flex-grow" }, /* @__PURE__ */ React.createElement(
     "h2",
@@ -74,7 +74,7 @@ function AboutUs() {
     {
       alt: "team",
       className: "w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4",
-      src: "https://dummyimage.com/90x90"
+      src: "https://gray-wtap-prod.cdn.arcpublishing.com/resizer/Mvm-FbZEPa1ntEZfgzM4kY2ELXc=/1200x675/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/5CGN3CK5YJDMVAHP7NMWDNCYH4.jpg"
     }
   ), /* @__PURE__ */ React.createElement("div", { className: "flex-grow" }, /* @__PURE__ */ React.createElement(
     "h2",

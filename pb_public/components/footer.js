@@ -78,7 +78,7 @@ function FooterBar() {
         "Main Github Repo"
       )))))
     )),
-    /* @__PURE__ */ React.createElement("div", { className: "bottom-10 left-10 text-center text-sm text-gray-500 hidden xl:block" }, "\xA9 2022 ", /* @__PURE__ */ React.createElement("a", { href: "https://themesberg.com", className: "hover:underline", target: "_blank" }, "Group 11"), ". All rights reserved."),
+    /* @__PURE__ */ React.createElement("div", { className: "bottom-10 left-10 text-center text-sm text-gray-500 hidden xl:block" }, "\xA9 2022 ", /* @__PURE__ */ React.createElement("a", { href: "https://themesberg.com", className: "hover:underline", target: "_blank", rel: "noreferrer" }, "Group 11"), ". All rights reserved."),
     /* @__PURE__ */ React.createElement("div", { className: "bottom-10 right-10 flex justify-center space-x-6" }, /* @__PURE__ */ React.createElement("p", { className: "interactive_hidden" }, "Clay Golan"), /* @__PURE__ */ React.createElement("a", { href: "", className: "text-gray-500 hover:text-green-100 hidden xl:block" }, githubSvg()), /* @__PURE__ */ React.createElement("p", { className: "interactive_hidden" }, "Geoffrey Mendoza"), /* @__PURE__ */ React.createElement("a", { href: "", className: "text-gray-500 hover:text-green-100 hidden xl:block" }, githubSvg()), /* @__PURE__ */ React.createElement("p", { className: "interactive_hidden" }, "Indrajeet Patwardhan"), /* @__PURE__ */ React.createElement("a", { href: "", className: "text-gray-500 hover:text-green-100 hidden xl:block" }, githubSvg()), /* @__PURE__ */ React.createElement("p", { className: "interactive_hidden" }, "Nghia Phan"), /* @__PURE__ */ React.createElement("a", { href: "", className: "text-gray-500 hover:text-green-100 hidden xl:block" }, githubSvg()))
   );
 }

@@ -22,11 +22,11 @@ function SignUp() {
     event.preventDefault();
     console.log(username + " " + password + " " + email);
     const data = {
-      "username": username,
-      "email": email,
-      "emailVisibility": true,
-      "password": password,
-      "passwordConfirm": password
+      username,
+      email,
+      emailVisibility: true,
+      password,
+      passwordConfirm: password
     };
     console.log(data);
     await pb.collection("users_auth").create(data);

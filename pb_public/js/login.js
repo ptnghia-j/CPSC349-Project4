@@ -26,10 +26,6 @@ function LogIn() {
     }
     pb.authStore.clear();
   };
-  const doSomethingElse = async (event) => {
-    event.preventDefault();
-    console.log("do something else");
-  };
   return /* @__PURE__ */ React.createElement("div", { className: "LogIn" }, /* @__PURE__ */ React.createElement("form", { onSubmit: handleSubmit }, /* @__PURE__ */ React.createElement("section", { className: "text-gray-600 body-font" }, /* @__PURE__ */ React.createElement("div", { className: "container px-5 py-24 mx-auto flex flex-wrap items-center" }, /* @__PURE__ */ React.createElement("div", { className: "lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0" }, /* @__PURE__ */ React.createElement("h1", { className: "title-font font-medium text-3xl text-gray-900" }, "Now that you have an account, log in to start blogging!")), /* @__PURE__ */ React.createElement("div", { className: "lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0" }, /* @__PURE__ */ React.createElement("h2", { className: "text-gray-900 text-lg font-medium title-font mb-5" }, "Login"), /* @__PURE__ */ React.createElement("div", { className: "relative mb-4" }, /* @__PURE__ */ React.createElement("label", { className: "leading-7 text-sm text-gray-600" }, "Username"), /* @__PURE__ */ React.createElement(
     "input",
     {
