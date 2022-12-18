@@ -1,10 +1,18 @@
 import PocketBase from "https://unpkg.com/pocketbase@0.8.2/dist/pocketbase.es.mjs";
 import HeaderBar from "/components/header.js";
 import FooterBar from "/components/footer.js";
-const root = ReactDOM.createRoot(document.getElementById("root"));
 const pb = new PocketBase("http://127.0.0.1:8090");
+const header = ReactDOM.createRoot(document.getElementById("header"));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+const footer = ReactDOM.createRoot(document.getElementById("footer"));
+header.render(
+  /* @__PURE__ */ React.createElement(React.StrictMode, null, /* @__PURE__ */ React.createElement(HeaderBar, null))
+);
 root.render(
   /* @__PURE__ */ React.createElement(React.StrictMode, null, /* @__PURE__ */ React.createElement(SignUp, null))
+);
+footer.render(
+  /* @__PURE__ */ React.createElement(React.StrictMode, null, /* @__PURE__ */ React.createElement(FooterBar, null))
 );
 function SignUp() {
   const [username, setUsername] = React.useState("");
@@ -24,7 +32,7 @@ function SignUp() {
     await pb.collection("users_auth").create(data);
     window.location.href = "./login.html";
   };
-  return /* @__PURE__ */ React.createElement("div", { className: "SignUp" }, /* @__PURE__ */ React.createElement(HeaderBar, null), /* @__PURE__ */ React.createElement("form", { onSubmit: handleSubmit }, /* @__PURE__ */ React.createElement("section", { className: "text-gray-600 body-font" }, /* @__PURE__ */ React.createElement("div", { className: "container px-5 py-24 mx-auto flex flex-wrap items-center" }, /* @__PURE__ */ React.createElement("div", { className: "lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0" }, /* @__PURE__ */ React.createElement("h1", { className: "title-font font-medium text-3xl text-gray-900" }, "This is your first step to becoming a blogger. Share your ides with the public")), /* @__PURE__ */ React.createElement("div", { className: "lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0" }, /* @__PURE__ */ React.createElement("h2", { className: "text-gray-900 text-lg font-medium title-font mb-5" }, "Sign Up"), /* @__PURE__ */ React.createElement("div", { className: "relative mb-4" }, /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ React.createElement("div", { className: "SignUp" }, /* @__PURE__ */ React.createElement("form", { onSubmit: handleSubmit }, /* @__PURE__ */ React.createElement("section", { className: "text-gray-600 body-font" }, /* @__PURE__ */ React.createElement("div", { className: "container px-5 py-24 mx-auto flex flex-wrap items-center" }, /* @__PURE__ */ React.createElement("div", { className: "lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0" }, /* @__PURE__ */ React.createElement("h1", { className: "title-font font-medium text-3xl text-gray-900" }, "This is your first step to becoming a blogger. Share your ides with the public")), /* @__PURE__ */ React.createElement("div", { className: "lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0" }, /* @__PURE__ */ React.createElement("h2", { className: "text-gray-900 text-lg font-medium title-font mb-5" }, "Sign Up"), /* @__PURE__ */ React.createElement("div", { className: "relative mb-4" }, /* @__PURE__ */ React.createElement(
     "label",
     {
       htmlFor: "full-name",
@@ -69,5 +77,5 @@ function SignUp() {
       type: "submit"
     },
     "Sign Up"
-  ), /* @__PURE__ */ React.createElement("a", { href: "./login.html", style: { color: "rgb(0, 119, 255)" } }, "Already have an account?"))))), /* @__PURE__ */ React.createElement(FooterBar, null));
+  ), /* @__PURE__ */ React.createElement("a", { href: "./login.html", style: { color: "rgb(0, 119, 255)" } }, "Already have an account?"))))));
 }

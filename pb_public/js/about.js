@@ -1,11 +1,19 @@
 import HeaderBar from "/components/header.js";
 import FooterBar from "/components/footer.js";
+const header = ReactDOM.createRoot(document.getElementById("header"));
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const footer = ReactDOM.createRoot(document.getElementById("footer"));
+header.render(
+  /* @__PURE__ */ React.createElement(React.StrictMode, null, /* @__PURE__ */ React.createElement(HeaderBar, null))
+);
 root.render(
   /* @__PURE__ */ React.createElement(React.StrictMode, null, /* @__PURE__ */ React.createElement(AboutUs, null))
 );
+footer.render(
+  /* @__PURE__ */ React.createElement(React.StrictMode, null, /* @__PURE__ */ React.createElement(FooterBar, null))
+);
 function AboutUs() {
-  return /* @__PURE__ */ React.createElement("div", { className: "AboutUs" }, /* @__PURE__ */ React.createElement(HeaderBar, null), /* @__PURE__ */ React.createElement("section", { className: "text-gray-600 body-font" }, /* @__PURE__ */ React.createElement("div", { className: "container px-5 py-24 mx-auto" }, /* @__PURE__ */ React.createElement("div", { className: "flex flex-col text-center w-full mb-20" }, /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ React.createElement("div", { className: "AboutUs" }, /* @__PURE__ */ React.createElement("section", { className: "text-gray-600 body-font" }, /* @__PURE__ */ React.createElement("div", { className: "container px-5 py-24 mx-auto" }, /* @__PURE__ */ React.createElement("div", { className: "flex flex-col text-center w-full mb-20" }, /* @__PURE__ */ React.createElement(
     "h1",
     {
       className: "sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900",
@@ -75,5 +83,5 @@ function AboutUs() {
       style: { color: "rgb(0, 119, 255)" }
     },
     "Nghia Phan"
-  ), /* @__PURE__ */ React.createElement("p", { className: "text-gray-500", style: { color: "rgb(0, 119, 255)" } }, /* @__PURE__ */ React.createElement("a", { href: "" }, "Github Repo")))))))), /* @__PURE__ */ React.createElement(FooterBar, null));
+  ), /* @__PURE__ */ React.createElement("p", { className: "text-gray-500", style: { color: "rgb(0, 119, 255)" } }, /* @__PURE__ */ React.createElement("a", { href: "" }, "Github Repo")))))))));
 }

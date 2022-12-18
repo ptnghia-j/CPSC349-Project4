@@ -19,8 +19,15 @@ const pb = new PocketBase('http://127.0.0.1:8090')
 const authData = await pb.admins.authWithPassword(USERNAME, PASSWORD)
 console.log(authData)
 
+const header = ReactDOM.createRoot(document.getElementById('header'))
 const root = ReactDOM.createRoot(document.getElementById('root'))
+const footer = ReactDOM.createRoot(document.getElementById('footer'))
 
+header.render(
+  <React.StrictMode>
+    <HeaderBar />
+  </React.StrictMode>
+)
 
 root.render(
   <React.StrictMode>
@@ -28,10 +35,16 @@ root.render(
   </React.StrictMode>
 )
 
+footer.render(
+  <React.StrictMode>
+    <FooterBar />
+  </React.StrictMode>
+)
+
+
 function App () {
   return (
     <div className='App'>
-      <HeaderBar />
 
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
@@ -81,7 +94,6 @@ function App () {
         </div>
       </section>
 
-      <FooterBar />
     </div>
   )
 }

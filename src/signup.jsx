@@ -10,15 +10,30 @@ containing these files when they converted to js
 import HeaderBar from "/components/header.js";
 import FooterBar from "/components/footer.js";
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
-
 const pb = new PocketBase('http://127.0.0.1:8090');
+
+const header = ReactDOM.createRoot(document.getElementById('header'))
+const root = ReactDOM.createRoot(document.getElementById('root'))
+const footer = ReactDOM.createRoot(document.getElementById('footer'))
+
+header.render(
+  <React.StrictMode>
+    <HeaderBar />
+  </React.StrictMode>
+)
 
 root.render(
   <React.StrictMode>
     <SignUp />
   </React.StrictMode>
 )
+
+footer.render(
+  <React.StrictMode>
+    <FooterBar />
+  </React.StrictMode>
+)
+
 
 function SignUp() {
 
@@ -54,7 +69,6 @@ function SignUp() {
 
   return (
     <div className="SignUp">
-      <HeaderBar />
       <form onSubmit={handleSubmit}>
         <section className="text-gray-600 body-font">
           <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
@@ -120,7 +134,6 @@ function SignUp() {
           </div>
         </section>
       </form>
-      <FooterBar />
     </div>
   ) 
 }

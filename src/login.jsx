@@ -9,13 +9,28 @@ containing these files when they converted to js
 import HeaderBar from "/components/header.js";
 import FooterBar from "/components/footer.js";
 
+const header = ReactDOM.createRoot(document.getElementById('header'))
 const root = ReactDOM.createRoot(document.getElementById('root'))
+const footer = ReactDOM.createRoot(document.getElementById('footer'))
+
+header.render(
+  <React.StrictMode>
+    <HeaderBar />
+  </React.StrictMode>
+)
 
 root.render(
   <React.StrictMode>
     <LogIn />
   </React.StrictMode>
 )
+
+footer.render(
+  <React.StrictMode>
+    <FooterBar />
+  </React.StrictMode>
+)
+
 
 const pb = new PocketBase('http://127.0.0.1:8090');
 
@@ -31,6 +46,7 @@ function LogIn () {
     await pb.collection('users_auth').authWithPassword(username, password);
   
     if (pb.authStore.isValid){
+      localStorage.setItem('username', username);
       window.location.href = './home.html';
     }
     
@@ -47,7 +63,6 @@ function LogIn () {
 
   return (
     <div className="LogIn">
-      <HeaderBar />
 
       <form onSubmit={handleSubmit}>
         <section className="text-gray-600 body-font">
@@ -101,7 +116,6 @@ function LogIn () {
         </section>
       </form>
       
-      <FooterBar />
     </div>
   )
 }
